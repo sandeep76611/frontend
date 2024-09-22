@@ -10,12 +10,13 @@ const ApiFilterComponent = () => {
   });
   const [error, setError] = useState('');
   const [serverResponse, setServerResponse] = useState(null); // Store server response
-  const [filteredData, setFilteredData] = useState({}); // Store filtered data
+  const [filteredData, setFilteredData] = useState({}); // Store filtered data6
+  const [loading,setLoading]=useState(false)
 
   const handleSubmit = async () => {
     try {
       const parsedInput = JSON.parse(apiInput);
-
+      setLoading(true)
       // Call the API
       const res = await fetch("https://backend-1ymp.onrender.com/bfhl", {
         method: "POST",
@@ -37,6 +38,9 @@ const ApiFilterComponent = () => {
       setError('');
     } catch (e) {
       setError('Error: Invalid JSON format or failed to communicate with the server');
+    }
+    finally{
+      setLoading(false)
     }
   };
 
@@ -92,6 +96,7 @@ const ApiFilterComponent = () => {
   return (
     <div>
       <fieldset style={{ width: '50%' }}>
+        <strong>Wait for few minits response will take time...</strong>
         <legend>API Input (JSON only)</legend>
         <input
           type="text"
