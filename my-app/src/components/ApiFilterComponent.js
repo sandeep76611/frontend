@@ -96,7 +96,7 @@ const ApiFilterComponent = () => {
   return (
     <div>
       <fieldset style={{ width: '50%' }}>
-        {loading && (<strong>Wait for few minits response will take time...</strong>)}
+        
         <legend>API Input (JSON only)</legend>
         <input
           type="text"
@@ -106,6 +106,7 @@ const ApiFilterComponent = () => {
           placeholder='Enter JSON input here'
         />
       </fieldset>
+      {loading && (<strong>Wait for few minits response will take time...</strong>)}
 
       <fieldset style={{ width: '50%', marginTop: '20px' }}>
         <legend>Upload File</legend>
